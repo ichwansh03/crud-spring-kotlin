@@ -13,4 +13,6 @@ interface MerchantContract {
     fun getAllMerchant(listMerchantRequest: ListMerchantRequest) : List<MerchantResponse>
 
     fun updateMerchant(id: Int, merchant: Merchant) : MerchantResponse
+
+    fun deleteMerchant(id: Int)
 }

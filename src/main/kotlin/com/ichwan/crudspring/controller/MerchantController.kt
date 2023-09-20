@@ -5,6 +5,7 @@ import com.ichwan.crudspring.model.request.ListMerchantRequest
 import com.ichwan.crudspring.model.response.HeaderResponse
 import com.ichwan.crudspring.model.response.MerchantResponse
 import com.ichwan.crudspring.service.MerchantService
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -58,6 +59,18 @@ class MerchantController(private val merchantService: MerchantService) {
             code = "200 OK",
             message = "Data merchant successfully updated",
             data = merchantService.updateMerchant(id, merchant)
+        )
+    }
+
+    @DeleteMapping("{id}")
+    fun deleteMerchant(@PathVariable("id") id: Int) : HeaderResponse<Int>{
+
+        merchantService.deleteMerchant(id)
+
+        return HeaderResponse(
+            code = "200 OK",
+            message = "Data merchant successfully deleted",
+            data = id
         )
     }
 }

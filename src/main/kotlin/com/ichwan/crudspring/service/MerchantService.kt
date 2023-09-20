@@ -56,6 +56,12 @@ class MerchantService(private val merchantRepository: MerchantRepository) : Merc
         return returnMerchantResponse(update)
     }
 
+    override fun deleteMerchant(id: Int) {
+        val merchant = findMerchantByIdOrNull(id)
+
+        merchantRepository.delete(merchant)
+    }
+
     private fun returnMerchantResponse(merchant: Merchant) : MerchantResponse {
         return MerchantResponse(
             merchant.id,
