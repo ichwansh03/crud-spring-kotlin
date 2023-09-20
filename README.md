@@ -3,16 +3,16 @@
 ## Create Merchant
 Request :
 * Method : POST
-* Endpoint : /pos/merchant
+* Endpoint : /api/merchant
 * Header :
     - Content-Type : application/json
     - Accept : application/json
 * Body :
 ```json
 {
-  "id" : "integer, auto-increment",
   "name" : "string",
   "address" : "string",
+  "typeBranch": "string",
   "latitude" : "string",
   "longitude" : "string",
   "admin" : "string"
@@ -21,13 +21,14 @@ Request :
 * Response :
 ```json
 {
-  "code" : "number",
-  "status" : "string",
+  "code" : "string",
+  "message" : "string",
   "data" : 
   {
     "id" : "integer, auto-increment",
     "name" : "string",
     "address" : "string",
+    "typeBranch": "string",
     "latitude" : "string",
     "longitude" : "string",
     "admin" : "string"
@@ -38,7 +39,7 @@ Request :
 ## Get Merchant
 Request :
 * Method : GET
-* Endpoint : /pos/merchant
+* Endpoint : /api/merchant
 * Header :
     - Content-Type : application/json
     - Accept : application/json
@@ -46,13 +47,14 @@ Request :
 * Response :
 ```json
 {
-  "code" : "number",
-  "status" : "string",
+  "code" : "string",
+  "message" : "string",
   "data" : 
   {
     "id" : "integer, auto-increment",
     "name" : "string",
     "address" : "string",
+    "typeBranch": "string",
     "latitude" : "string",
     "longitude" : "string",
     "admin" : "string"
@@ -63,7 +65,7 @@ Request :
 ## Update Merchant
 Request :
 * Method : PUT
-* Endpoint : /pos/merchant/{id}
+* Endpoint : /api/merchant/{id}
 * Header :
     - Content-Type : application/json
     - Accept : application/json
@@ -72,6 +74,7 @@ Request :
 {
   "name" : "string",
   "address" : "string",
+  "typeBranch": "string",
   "latitude" : "string",
   "longitude" : "string",
   "admin" : "string"
@@ -80,13 +83,14 @@ Request :
 * Response :
 ```json
 {
-  "code" : "number",
-  "status" : "string",
+  "code" : "string",
+  "message" : "string",
   "data" : 
   {
     "id" : "integer, auto-increment",
     "name" : "string",
     "address" : "string",
+    "typeBranch": "string",
     "latitude" : "string",
     "longitude" : "string",
     "admin" : "string"
@@ -106,13 +110,14 @@ Request :
 * Response :
 ```json
 {
-  "code" : "number",
-  "status" : "string",
+  "code" : "string",
+  "message" : "string",
   "data" : [
     {
       "id" : "integer, auto-increment",
       "name" : "string",
       "address" : "string",
+      "typeBranch": "string",
       "latitude" : "string",
       "longitude" : "string",
       "admin" : "string"
@@ -121,6 +126,7 @@ Request :
       "id" : "integer, auto-increment",
       "name" : "string",
       "address" : "string",
+      "typeBranch": "string",
       "latitude" : "string",
       "longitude" : "string",
       "admin" : "string"
@@ -139,8 +145,8 @@ Request :
 * Response :
 ```json
 {
-  "code" : "number",
-  "status" : "string"
+  "code" : "string",
+  "message" : "string"
 }
 ```
 
