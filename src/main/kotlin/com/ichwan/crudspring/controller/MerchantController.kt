@@ -1,6 +1,5 @@
 package com.ichwan.crudspring.controller
 
-import com.ichwan.crudspring.model.ImageMerchant
 import com.ichwan.crudspring.model.Merchant
 import com.ichwan.crudspring.model.request.ListMerchantRequest
 import com.ichwan.crudspring.model.response.HeaderResponse
@@ -8,6 +7,9 @@ import com.ichwan.crudspring.model.response.ImageResponse
 import com.ichwan.crudspring.model.response.MerchantResponse
 import com.ichwan.crudspring.service.ImageMerchantService
 import com.ichwan.crudspring.service.MerchantService
+import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -83,12 +85,21 @@ class MerchantController(
 
     @PostMapping("upload")
     fun uploadImage(@RequestParam("image_outlet") file: MultipartFile) : HeaderResponse<ImageResponse>{
-        imageMerchantService.upload(file)
 
         return HeaderResponse(
             code = "200 OK",
-            message = "Image uploaded",
-            data = ImageResponse(0,"name","png")
+            message = "Upload Image Merchant",
+            data = imageMerchantService.upload(file)
         )
     }
+
+    @GetMapping("download/{filename}")
+    fun downloadImage(@PathVariable filename: String) : ResponseEntity<ByteArray>{
+        val image = imageMerchantService.download(filename)
+
+        return ResponseEntity.status(HttpStatus.OK)
+            .contentType(MediaType.valueOf("image/png"))
+            .body(image)
+    }
+
 }

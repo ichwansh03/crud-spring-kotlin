@@ -12,11 +12,11 @@ class ImageMerchant {
 
     @Lob
     @Column(name = "image")
-    lateinit var image_outlet: ByteArray
+    lateinit var imageOutlet: ByteArray
 
     @Column(name = "name")
-    var image_name: String? = null
+    var imageName: String? = null
 
     @Column(name = "type")
-    var image_type: String? = null
+    var imageType: String? = null
 }
